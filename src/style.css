@@ -1,0 +1,91 @@
+:root {
+  --bg-dark: #0d0d0d;
+  --panel-bg: #1f1b2e;
+  --text-light: #eaeaea;
+  --accent-purple: #c084fc;
+  --accent-green: #39ff14;
+  --accent-hover: #a855f7;
+}
+
+.game-landing {
+  height: 100vh;
+  background: linear-gradient(160deg, var(--bg-dark), #1a1a2e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace, system-ui;
+  color: var(--text-light);
+  text-align: center;
+  padding: 2rem;
+}
+
+.game-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: flicker 2s infinite alternate;
+}
+
+.name {
+  color: var(--accent-purple);
+}
+
+.cursor {
+  color: var(--accent-purple);
+  animation: cursorBlink 1s step-end infinite;
+  margin-left: 0.25rem;
+}
+
+.game-subtitle {
+  font-size: 0.875rem;
+  color: var(--accent-green);
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--accent-purple);
+  animation: typing 3s steps(40, end) 1 forwards, blink 1s step-end infinite;
+  width: 0;
+}
+
+.divider {
+  color: var(--accent-purple);
+  margin: 0 0.5rem;
+  text-shadow: 0 0 8px var(--accent-purple);
+}
+
+.start-button {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--accent-purple);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: var(--accent-purple);
+  color: black;
+  box-shadow: 0 0 10px var(--accent-purple);
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: var(--accent-purple); }
+  50% { border-color: transparent; }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
