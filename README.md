@@ -1,5 +1,40 @@
-# Vue 3 + Vite
+# Sara McHattie Portfolio
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a personal web developer portfolio built with Vue 3, Vite, and custom CSS. It showcases current skills in front-end development, mobile app design, and game/VR development.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Features
+
+- Gamified landing page with typewriter animation
+- Custom dark theme with accent colors
+- Responsive layout using modern CSS
+- Designed for future expansion (project showcase, about, contact)
+
+## Built With
+
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- Custom CSS (no frameworks)
+
+## Planned Additions
+
+- Interactive "Projects" section
+- About and contact pages
+- Optional Three.js 3D background or animated UI
+
+## Setup Instructions
+
+1. Clone the repository  
+   `git clone https://github.com/yourusername/SaraPortfolio.git`
+
+2. Navigate into the project folder  
+   `cd SaraPortfolio`
+
+3. Install dependencies  
+   `npm install`
+
+4. Start the development server  
+   `npm run dev`
+
+## License
+
+This project is open for learning and inspiration. No license applied at this time.
