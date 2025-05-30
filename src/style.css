@@ -70,6 +70,55 @@
   box-shadow: 0 0 10px var(--accent-purple);
 }
 
+/* 🔥 New styles for sections */
+.level-section {
+  min-height: 100vh;
+  background: var(--panel-bg);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--accent-green);
+  margin-bottom: 1.5rem;
+}
+
+.section-text {
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-button {
+  background-color: transparent;
+  border: 2px solid var(--accent-purple);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--accent-purple);
+}
+
+.contact-button:hover {
+  background-color: var(--accent-purple);
+  color: black;
+  box-shadow: 0 0 20px var(--accent-purple);
+}
+
+/* 🔥 Keyframes for the animations */
 @keyframes flicker {
   0%   { opacity: 1; }
   100% { opacity: 0.85; }

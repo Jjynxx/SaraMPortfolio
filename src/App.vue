@@ -1,4 +1,5 @@
 <template>
+  <!-- Start Screen -->
   <section class="game-landing">
     <div class="hud">
       <h1 class="game-title">
@@ -12,12 +13,23 @@
     </div>
   </section>
 
-  <section id="projects" style="height: 100vh; background: #1e1e2f; color: white; display: flex; align-items: center; justify-content: center;">
-    <h2>Level 1: Projects Coming Soon...</h2>
-  </section>
+  <!-- Level 1: Projects -->
+  <ProjectSection />
+
+  <!-- Level 2: About Me -->
+  <AboutSection />
+
+  <!-- Final Boss: Contact -->
+  <ContactSection />
 </template>
 
 <script setup>
+// Import the new level components
+import ProjectSection from './components/ProjectSection.vue'
+import AboutSection from './components/AboutSection.vue'
+import ContactSection from './components/ContactSection.vue'
+
+// Scroll to Projects when clicking Start
 const goToProjects = () => {
   const el = document.getElementById("projects");
   if (el) el.scrollIntoView({ behavior: "smooth" });
