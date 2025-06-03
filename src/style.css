@@ -18,16 +18,22 @@ html, body {
   font-family: 'Rajdhani', sans-serif; /* Modern body font */
 }
 
+/* Canvas Starfield */
+.star-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Put behind text */
+  pointer-events: none; /* So it doesn't block button clicks */
+}
+
 /* Game Landing Section */
 .game-landing {
   position: relative;
   height: 100vh;
   background-color: #000000;
-  background-image: url('/images/generated_stars.png'); /* Stars background */
-  background-repeat: repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  animation: moveStars 300s linear infinite; /* Stars slow move */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,18 +43,6 @@ html, body {
   padding: 2rem;
   overflow: hidden;
 }
-
-.twinkle-layer {
-  position: absolute;
-  inset: 0;
-  background-image: url('/images/generated_stars.png'); /* Public folder path */
-  background-repeat: repeat;
-  background-size: cover;
-  opacity: 0.3; /* ✨ Start with visible opacity */
-  animation: twinkle 8s ease-in-out infinite alternate; /* ✨ Animate opacity */
-  z-index: 0;
-}
-
 
 /* Fade-in class */
 .fade-in {
@@ -64,7 +58,7 @@ html, body {
 
 .game-title {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem; 
   animation: flicker 2s infinite alternate;
 }
 
@@ -82,10 +76,9 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent-purple);
-  width: 0; /* <--- hide initially */
+  width: 0; /* hidden initially */
   animation: typing 4s steps(50, end) 1 forwards 2.5s; /* Typing starts after fade-in */
 }
-
 
 /* Cursor */
 .cursor {
@@ -105,7 +98,7 @@ html, body {
 
 /* Start Button */
 .start-button {
-  margin-top: 2rem; /* Add this line */
+  margin-top: 2rem;
   background-color: transparent;
   color: var(--text-light);
   border: 2px solid var(--accent-purple);
@@ -116,11 +109,18 @@ html, body {
   transition: all 0.3s ease;
 }
 
-
 .start-button:hover {
   background-color: var(--accent-purple);
   color: black;
   box-shadow: 0 0 10px var(--accent-purple);
+}
+
+.galaxy-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a002a 0%, #000000 70%);
+  opacity: 0.2; /* Very subtle */
+  z-index: 0;
 }
 
 /* Section Styles */
@@ -194,18 +194,13 @@ html, body {
   }
   100% {
     width: 100%;
-    border-right: none; /* <-- remove blinking cursor */
+    border-right: none; /* Remove blinking cursor */
   }
 }
 
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-@keyframes moveStars {
-  from { background-position: 0 0; }
-  to { background-position: 5000px 5000px; }
 }
 
 @keyframes fadeIn {
@@ -220,11 +215,3 @@ html, body {
     transform: scale(1);
   }
 }
-
-/* Twinkle Animation */
-@keyframes twinkle {
-  0% { opacity: 0.2; }
-  50% { opacity: 0.5; } /* ✨ Midway brighter */
-  100% { opacity: 0.3; }
-}
-
