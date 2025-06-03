@@ -7,29 +7,44 @@
   --accent-hover: #a855f7;
 }
 
-/* Global Page Settings */
+/* ------------------------------ */
+/* Global Page Settings           */
+/* ------------------------------ */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow-x: hidden;
-  background-color: #000000; /* Immediate black background */
-  font-family: 'Rajdhani', sans-serif; /* Modern body font */
+  background-color: #000000;
+  font-family: 'Rajdhani', sans-serif;
+  scroll-behavior: smooth;;
 }
 
-/* Canvas Starfield */
+/* ------------------------------ */
+/* Canvas Starfield Background    */
+/* ------------------------------ */
 .star-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Put behind text */
-  pointer-events: none; /* So it doesn't block button clicks */
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Game Landing Section */
+.galaxy-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a002a 0%, #000000 70%);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* ------------------------------ */
+/* Landing Page Styles            */
+/* ------------------------------ */
 .game-landing {
   position: relative;
   height: 100vh;
@@ -37,20 +52,19 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Press Start 2P', monospace, system-ui; /* Retro font for titles */
+  flex-direction: column;
+  font-family: 'Press Start 2P', monospace, system-ui;
   color: var(--text-light);
   text-align: center;
   padding: 2rem;
   overflow: hidden;
 }
 
-/* Fade-in class */
 .fade-in {
   animation: fadeIn 2.5s ease-in-out forwards;
-  opacity: 0; /* starts invisible */
+  opacity: 0;
 }
 
-/* HUD Content Above Background */
 .hud {
   position: relative;
   z-index: 1;
@@ -58,7 +72,7 @@ html, body {
 
 .game-title {
   font-size: 2rem;
-  margin-bottom: 2.5rem; 
+  margin-bottom: 2.5rem;
   animation: flicker 2s infinite alternate;
 }
 
@@ -76,24 +90,40 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent-purple);
-  width: 0; /* hidden initially */
-  animation: typing 4s steps(50, end) 1 forwards 2.5s; /* Typing starts after fade-in */
+  width: 0;
+  animation: typing 4s steps(50, end) 1 forwards 2.5s;
 }
 
-/* Cursor */
+/* Blinking Cursor for Subtitle */
 .cursor {
   display: inline-block;
   width: 1ch;
-  color: var(--accent-purple); 
-  animation: cursorBlink 1s step-end infinite 6.5s; /* Cursor starts blinking after typing ends */
+  color: var(--accent-purple);
+  animation: cursorBlink 1s step-end infinite 6.5s;
   margin-left: 0.25rem;
 }
 
-/* Divider */
-.divider {
-  color: var(--accent-purple);
-  margin: 0 0.5rem;
-  text-shadow: 0 0 8px var(--accent-purple);
+/* ------------------------------ */
+/* Landing Page Blurb Box         */
+/* ------------------------------ */
+.landing-blurb {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 2rem;
+  max-width: 600px;
+  padding: 1.5rem 2rem;
+  background-color: rgba(31, 27, 46, 0.75);
+  border: 2px solid var(--accent-purple);
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--accent-purple);
+  font-family: 'Rajdhani', sans-serif;
+  text-align: center;
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 6.5s;
+  opacity: 0;
+  transform: translateY(20px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Start Button */
@@ -115,15 +145,18 @@ html, body {
   box-shadow: 0 0 10px var(--accent-purple);
 }
 
-.galaxy-layer {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, #1a002a 0%, #000000 70%);
-  opacity: 0.2; /* Very subtle */
-  z-index: 0;
+/* ------------------------------ */
+/* Divider                        */
+/* ------------------------------ */
+.divider {
+  color: var(--accent-purple);
+  margin: 0 0.5rem;
+  text-shadow: 0 0 8px var(--accent-purple);
 }
 
-/* Section Styles */
+/* ------------------------------ */
+/* Section Styles (Projects, etc) */
+/* ------------------------------ */
 .level-section {
   min-height: 100vh;
   background: var(--panel-bg);
@@ -140,7 +173,7 @@ html, body {
   font-size: 2rem;
   color: var(--accent-green);
   margin-bottom: 1.5rem;
-  font-family: 'Press Start 2P', monospace; /* Retro for section titles */
+  font-family: 'Press Start 2P', monospace;
 }
 
 .section-text {
@@ -172,7 +205,199 @@ html, body {
   box-shadow: 0 0 20px var(--accent-purple);
 }
 
-/* Keyframes for the Animations */
+/* ------------------------------ */
+/* About Me Section Only          */
+/* ------------------------------ */
+.about-box {
+  position: relative;
+  background-color: rgba(31, 27, 46, 0.8);
+  padding: 3rem;
+  border-radius: 12px;
+  border: 2px solid var(--accent-purple);
+  box-shadow: 0 0 15px var(--accent-purple);
+  max-width: 900px;
+  width: 90%;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.profile-image {
+  float: right;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-purple);
+  box-shadow: 0 0 15px var(--accent-purple);
+}
+
+.about-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.75rem;
+  color: var(--accent-green);
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.about-text {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-light);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.about-text::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.about-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.about-button {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--accent-purple);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.about-button:hover {
+  background-color: var(--accent-purple);
+  color: black;
+  box-shadow: 0 0 15px var(--accent-purple);
+}
+
+/* ------------------------------ */
+/* Projects Section               */
+/* ------------------------------ */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: rgba(31, 27, 46, 0.9);
+  border: 2px solid var(--accent-purple);
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--accent-purple);
+  padding: 2rem;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent-purple);
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  border: 2px solid var(--accent-purple);
+  box-shadow: 0 0 10px var(--accent-purple);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  color: var(--accent-green);
+  margin-bottom: 1rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.project-button {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--accent-purple);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.project-button:hover {
+  background-color: var(--accent-purple);
+  color: black;
+  box-shadow: 0 0 15px var(--accent-purple);
+}
+
+/* ------------------------------ */
+/* Section Buttons                */
+/* ------------------------------ */
+.section-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: 2px solid var(--accent-purple);
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  font-family: 'Press Start 2P', monospace;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.nav-button:hover {
+  background-color: var(--accent-purple);
+  color: black;
+  box-shadow: 0 0 15px var(--accent-purple);
+}
+
+/* ------------------------------ */
+/* Coming Soon Placeholder        */
+/* ------------------------------ */
+.coming-soon {
+  justify-content: center;
+  align-items: center;
+}
+
+.coming-soon-text {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--accent-purple);
+  font-size: 1.25rem;
+  opacity: 0.7;
+}
+
+/* ------------------------------ */
+/* Keyframes for Animations       */
+/* ------------------------------ */
 @keyframes flicker {
   0% { opacity: 1; }
   100% { opacity: 0.85; }
@@ -184,18 +409,9 @@ html, body {
 }
 
 @keyframes typing {
-  0% {
-    width: 0;
-    border-right: 2px solid var(--accent-purple);
-  }
-  99% {
-    width: 100%;
-    border-right: 2px solid var(--accent-purple);
-  }
-  100% {
-    width: 100%;
-    border-right: none; /* Remove blinking cursor */
-  }
+  0% { width: 0; border-right: 2px solid var(--accent-purple); }
+  99% { width: 100%; border-right: 2px solid var(--accent-purple); }
+  100% { width: 100%; border-right: none; }
 }
 
 @keyframes cursorBlink {
@@ -214,4 +430,9 @@ html, body {
     background-color: #000000;
     transform: scale(1);
   }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

@@ -1,28 +1,43 @@
 <template>
-  <section class="game-landing fade-in">
-    <!-- Galaxy Background Layer -->
-    <div class="galaxy-layer"></div>
+  <main> <!-- 🆕 WRAPPER -->
+    <section class="game-landing fade-in">
+      <!-- Galaxy Background Layer -->
+      <div class="galaxy-layer"></div>
 
-    <!-- Star Canvas -->
-    <canvas id="starCanvas" class="star-canvas"></canvas>
+      <!-- Star Canvas -->
+      <canvas id="starCanvas" class="star-canvas"></canvas>
 
-    <div class="hud">
-      <h1 class="game-title">
-        <span class="name">Sara McHattie</span>
-      </h1>
+      <div class="hud">
+        <h1 class="game-title">
+          <span class="name">Sara McHattie</span>
+        </h1>
 
-      <p class="game-subtitle typewriter">
-        VR & Game Developer <span class="divider">|</span> Database Engineer <span class="divider">|</span> Web Developer<span class="cursor">|</span>
-      </p>
+        <p class="game-subtitle typewriter">
+          VR & Game Developer <span class="divider">|</span> Database Engineer <span class="divider">|</span> Web Developer<span class="cursor">|</span>
+        </p>
 
-      <button class="start-button" @click="goToProjects">▶ Start</button>
-    </div>
-  </section>
+        <!-- 🌟 Corrected Landing Blurb Box -->
+        <div class="landing-blurb">
+          <p>
+            Building immersive VR experiences and scalable web solutions using C++, C#, Unity, Unreal Engine, and MySQL.
+          </p>
+        </div>
 
-  <ProjectSection />
-  <AboutSection />
-  <ContactSection />
+        <!-- Only Start button here -->
+        <div class="section-buttons">
+          <button class="nav-button" @click="goToProjects">▶ Start</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⬇️ These are inside <main> now -->
+    <ProjectSection />
+    <AboutSection />
+    <ContactSection />
+  </main> <!-- 🆕 CLOSE WRAPPER -->
 </template>
+
+
 
 <script setup>
 import { onMounted } from 'vue'
@@ -35,6 +50,10 @@ const goToProjects = () => {
   if (el) {
     el.scrollIntoView({ behavior: "smooth" });
   }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 onMounted(() => {
@@ -70,13 +89,12 @@ onMounted(() => {
       x: Math.random() * width,
       y: Math.random() * height / 2,
       length: Math.random() * 300 + 100,
-      speed: Math.random() * 6 + 4, // More natural random speed
+      speed: Math.random() * 6 + 4,
       opacity: 1,
-      trailLengthDelta: Math.random() * 0.1 + 0.05, // Trail variation
+      trailLengthDelta: Math.random() * 0.1 + 0.05,
     });
   }
 
-  // Zoom pulse
   let zoom = 1;
   let zoomDirection = 1;
   function updateZoom() {
@@ -110,7 +128,6 @@ onMounted(() => {
       }
     });
 
-    // Draw shooting stars with blur trails
     shootingStars.forEach((shootingStar, index) => {
       const grad = ctx.createLinearGradient(
         shootingStar.x,
@@ -145,10 +162,8 @@ onMounted(() => {
   }
 
   drawStars();
+  setInterval(createShootingStar, 6000);
 
-  setInterval(createShootingStar, 6000); // Shooting star every ~6 seconds
-
-  // Parallax effect
   window.addEventListener('mousemove', (e) => {
     const parallaxX = (e.clientX - width / 2) * 0.00015;
     const parallaxY = (e.clientY - height / 2) * 0.00015;
