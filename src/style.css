@@ -7,16 +7,59 @@
   --accent-hover: #a855f7;
 }
 
+/* Global Page Settings */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #000000; /* Immediate black background */
+  font-family: 'Rajdhani', sans-serif; /* Modern body font */
+}
+
+/* Game Landing Section */
 .game-landing {
+  position: relative;
   height: 100vh;
-  background: linear-gradient(160deg, var(--bg-dark), #1a1a2e);
+  background-color: #000000;
+  background-image: url('/images/generated_stars.png'); /* Stars background */
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: moveStars 300s linear infinite; /* Stars slow move */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Press Start 2P', monospace, system-ui;
+  font-family: 'Press Start 2P', monospace, system-ui; /* Retro font for titles */
   color: var(--text-light);
   text-align: center;
   padding: 2rem;
+  overflow: hidden;
+}
+
+.twinkle-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/generated_stars.png'); /* Public folder path */
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.3; /* ✨ Start with visible opacity */
+  animation: twinkle 8s ease-in-out infinite alternate; /* ✨ Animate opacity */
+  z-index: 0;
+}
+
+
+/* Fade-in class */
+.fade-in {
+  animation: fadeIn 2.5s ease-in-out forwards;
+  opacity: 0; /* starts invisible */
+}
+
+/* HUD Content Above Background */
+.hud {
+  position: relative;
+  z-index: 1;
 }
 
 .game-title {
@@ -26,16 +69,12 @@
 }
 
 .name {
+  display: inline-block;
   color: var(--accent-purple);
-}
-
-.cursor {
-  color: var(--accent-purple);
-  animation: cursorBlink 1s step-end infinite;
-  margin-left: 0.25rem;
 }
 
 .game-subtitle {
+  display: block;
   font-size: 0.875rem;
   color: var(--accent-green);
   margin-top: -1rem;
@@ -43,17 +82,30 @@
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent-purple);
-  animation: typing 3s steps(40, end) 1 forwards, blink 1s step-end infinite;
-  width: 0;
+  width: 0; /* <--- hide initially */
+  animation: typing 4s steps(50, end) 1 forwards 2.5s; /* Typing starts after fade-in */
 }
 
+
+/* Cursor */
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  color: var(--accent-purple); 
+  animation: cursorBlink 1s step-end infinite 6.5s; /* Cursor starts blinking after typing ends */
+  margin-left: 0.25rem;
+}
+
+/* Divider */
 .divider {
   color: var(--accent-purple);
   margin: 0 0.5rem;
   text-shadow: 0 0 8px var(--accent-purple);
 }
 
+/* Start Button */
 .start-button {
+  margin-top: 2rem; /* Add this line */
   background-color: transparent;
   color: var(--text-light);
   border: 2px solid var(--accent-purple);
@@ -64,13 +116,14 @@
   transition: all 0.3s ease;
 }
 
+
 .start-button:hover {
   background-color: var(--accent-purple);
   color: black;
   box-shadow: 0 0 10px var(--accent-purple);
 }
 
-/* 🔥 New styles for sections */
+/* Section Styles */
 .level-section {
   min-height: 100vh;
   background: var(--panel-bg);
@@ -87,6 +140,7 @@
   font-size: 2rem;
   color: var(--accent-green);
   margin-bottom: 1.5rem;
+  font-family: 'Press Start 2P', monospace; /* Retro for section titles */
 }
 
 .section-text {
@@ -118,9 +172,9 @@
   box-shadow: 0 0 20px var(--accent-purple);
 }
 
-/* 🔥 Keyframes for the animations */
+/* Keyframes for the Animations */
 @keyframes flicker {
-  0%   { opacity: 1; }
+  0% { opacity: 1; }
   100% { opacity: 0.85; }
 }
 
@@ -130,11 +184,47 @@
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  0% {
+    width: 0;
+    border-right: 2px solid var(--accent-purple);
+  }
+  99% {
+    width: 100%;
+    border-right: 2px solid var(--accent-purple);
+  }
+  100% {
+    width: 100%;
+    border-right: none; /* <-- remove blinking cursor */
+  }
 }
 
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: 5000px 5000px; }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    background-color: #000000;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    background-color: #000000;
+    transform: scale(1);
+  }
+}
+
+/* Twinkle Animation */
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; } /* ✨ Midway brighter */
+  100% { opacity: 0.3; }
+}
+
